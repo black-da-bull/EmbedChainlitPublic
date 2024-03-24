@@ -414,10 +414,7 @@ class _PatchingASTWalker:
         if node.format_spec:
             children.append(":")
             for val in node.format_spec.values:
-                if isinstance(val, ast.FormattedValue):
-                    children.append(val.value)
-                else:
-                    children.append(val.s)
+                children.append(val.value)
         children.append("}")
         self._handle(node, children)
 
@@ -555,6 +552,10 @@ class _PatchingASTWalker:
 
     def _Global(self, node):
         children = ["global", *self._child_nodes(node.names, ",")]
+        self._handle(node, children)
+
+    def _Nonlocal(self, node):
+        children = ["nonlocal", *self._child_nodes(node.names, ",")]
         self._handle(node, children)
 
     def _If(self, node):
@@ -703,6 +704,9 @@ class _PatchingASTWalker:
             self._TryFinally(node)
         else:
             self._TryExcept(node)
+
+    def _TryStar(self, node):
+        self._Try(node)
 
     def _ExceptHandler(self, node):
         self._excepthandler(node)

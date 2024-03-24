@@ -1,5 +1,0 @@
-Use the following pieces of context to answer the query at the end. If you don't know, just say that you don't know, don't try to make up an answer.
-    {context}
-Query: {input_query}
-Now, provide any correct information that can be concluded from the context information and that is responsive to the user's query. Do not provide information from general knowledge, **only** use the context. Include **direct quotes** from the context supporting any conclusions. Do not cite section numbers. 
-    

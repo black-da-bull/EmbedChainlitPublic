@@ -69,8 +69,8 @@ class ModuleImports:
                     elif isinstance(el, ast.Starred):
                         assignments.append(el.value)
                     else:
-                        if isinstance(el, ast.Str):
-                            result.add(el.s)
+                        if isinstance(el, ast.Constant) and isinstance(el.value, str):
+                            result.add(el.value)
                         elif isinstance(el, ast.Name):
                             try:
                                 name = pymodule.get_attribute(el.id)
@@ -78,8 +78,14 @@ class ModuleImports:
                                 continue
                             else:
                                 for av in _resolve_name(name):
-                                    if isinstance(av.ast_node, ast.Str):
-                                        result.add(av.ast_node.s)
+                                    if isinstance(
+                                        av.ast_node,
+                                        ast.Constant,
+                                    ) and isinstance(
+                                        av.ast_node.value,
+                                        str,
+                                    ):
+                                        result.add(av.ast_node.value)
             elif isinstance(assignment, ast.Name):
                 try:
                     name = pymodule.get_attribute(assignment.id)

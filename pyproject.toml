@@ -1,25 +1,27 @@
 [tool.poetry]
 name = "python-template"
-version = "0.1.0"
-description = ""
+version = "0.1.2"
+description = "test"
 authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.dependencies]
-python = ">=3.10.0,<3.11"
-numpy = "^1.22.2"
-replit = "^3.2.4"
-Flask = "^2.2.0"
-urllib3 = "^1.26.12"
-pandas = "^2.0.3"
-openai = "^0.27.8"
-tenacity = "^8.2.2"
-termcolor = "^2.3.0"
-tiktoken = "^0.4.0"
+python = ">=3.11.0,<3.12"
+numpy = ">=1.24.4"
+replit = ">=3.6.1"
+Flask = ">=2.2.2"
+urllib3 = ">=1.26.12"
+pandas = ">=2.0.3"
+openai = ">=1.1.1"
+tenacity = ">=8.2.2"
+termcolor = ">=2.3.0"
+tiktoken = ">=0.5.2"
+chainlit = ">=1.0.401"
+embedchain = ">=0.1.98"
 
 [tool.poetry.dev-dependencies]
-debugpy = "^1.6.2"
-replit-python-lsp-server = {extras = ["yapf", "rope", "pyflakes"], version = "^1.5.9"}
+debugpy = ">=1.6.5"
+replit-python-lsp-server = {extras = ["yapf", "rope", "pyflakes"], version = ">=1.5.9"}
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core>=1.1.13"]
 build-backend = "poetry.core.masonry.api"
